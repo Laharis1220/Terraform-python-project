@@ -87,8 +87,8 @@ provisioner "remote-exec" {
       "echo 'Hello from the remote instance'",
       "sudo apt update -y",  
       "sudo apt-get install -y python3-pip", 
-      "cd /home/ubuntu",
       "sudo pip3 install flask",
+      "cd /home/ubuntu",
       "sudo python3 app.py"
     ]
 }
