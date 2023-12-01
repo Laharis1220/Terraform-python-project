@@ -85,14 +85,11 @@ provisioner "file" {
 provisioner "remote-exec" {
     inline = [
       "echo 'Hello from the remote instance'",
+      "sudo apt update -y",
+      "sudo apt-get install -y python3-pip",
       "cd /home/ubuntu",
-      "sudo apt-get update",
-      "sudo apt-get install python3",
-      "pip install virtualenv",
-      "virtualenv python-project",
-      "source python-project/bin/activate",
-      "pip install flask",
-      "sudo python3 app.py"
+      "sudo pip3 install flask",
+      "sudo python3 app.py",
     ]
 }
 }
