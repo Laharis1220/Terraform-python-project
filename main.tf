@@ -12,10 +12,6 @@ resource "aws_dynamodb_table" "terraform_lock" {
     type = "S"
   }
 }
-resource "aws_key_pair" "example" {
-  key_name = "terraform-demo"
-  public_key = file("~/.ssh/id_rsa.pub")
-}
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
 }
