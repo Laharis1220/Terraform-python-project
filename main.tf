@@ -12,6 +12,10 @@ resource "aws_dynamodb_table" "terraform_lock" {
     type = "S"
   }
 }
+resource "aws_key_pair" "example" {
+  key_name   = "terraform-demo-lahari"  
+  public_key = file("~/.ssh/id_rsa.pub")  
+}
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
 }
@@ -65,8 +69,15 @@ resource "aws_security_group" "webSg" {
 resource "aws_instance" "webserver" {
   ami = var.ami_value
   instance_type = var.instance_type_value
+  key_name      = aws_key_pair.example.key_name
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id = aws_subnet.sub1.id
+ connection {
+    type        = "ssh"
+    user        = "ubuntu"  
+    private_key = file("~/.ssh/id_rsa") 
+    host        = self.public_ip
+  }
 provisioner "file" {
     source ="app.py"
     destination = "/home/ubuntu/app.py"
