@@ -65,7 +65,6 @@ resource "aws_security_group" "webSg" {
 resource "aws_instance" "webserver" {
   ami = var.ami_value
   instance_type = var.instance_type_value
-  key_name = aws_key_pair.example.key_name
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id = aws_subnet.sub1.id
   connection {
