@@ -92,4 +92,7 @@ provisioner "remote-exec" {
       "sudo python3 app.py",
     ]
 }
+tags = {
+    Name = "Web-server-01"
+  }
 }
