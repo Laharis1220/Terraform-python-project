@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "lahari-s3-terraform-20971" 
+  bucket = "lahari-s3-terraform-1220" 
 }
 
 resource "aws_dynamodb_table" "terraform_lock" {
