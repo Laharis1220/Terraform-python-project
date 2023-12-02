@@ -67,12 +67,6 @@ resource "aws_instance" "webserver" {
   instance_type = var.instance_type_value
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id = aws_subnet.sub1.id
-  connection {
-    type = "ssh"
-    user = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")  
-    host        = self.public_ip
-  }
 provisioner "file" {
     source ="app.py"
     destination = "/home/ubuntu/app.py"
