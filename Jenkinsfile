@@ -10,7 +10,7 @@ pipeline {
 
    agent  any
     stages {
-        stage('Plan') {
+        stage('Test') {
             steps {
                 sh 'cd ..;pwd'
                 sh 'cd ..;pwd'
