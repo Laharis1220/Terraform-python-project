@@ -14,7 +14,7 @@ resource "aws_dynamodb_table" "terraform_lock" {
 }
 resource "aws_key_pair" "example" {
   key_name   = "terraform-demo-lahari"  
-  public_key = file("${path.module}/id_rsa.pub")  
+  public_key = file("id_rsa.pub")  
 }
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
@@ -75,7 +75,7 @@ resource "aws_instance" "webserver" {
  connection {
     type        = "ssh"
     user        = "ubuntu"  
-    private_key = file("${path.module}/.ssh/id_rsa") 
+    private_key = file("id_rsa") 
     host        = self.public_ip
   }
 provisioner "file" {
