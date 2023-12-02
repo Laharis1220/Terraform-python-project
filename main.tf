@@ -14,7 +14,7 @@ resource "aws_dynamodb_table" "terraform_lock" {
 }
 resource "aws_key_pair" "example" {
   key_name   = "terraform-demo-lahari"  
-  public_key = file("~/.ssh/id_rsa.pub")  
+  public_key = file("~/id_rsa.pub")  
 }
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
